@@ -1,0 +1,22 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+root = true
+
+[*]
+charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.sln]
+indent_style = tab
+
+[*.xml]
+indent_size = 2
+
+[*.csproj]
+indent_size = 2
+
+[*.config]
+indent_size = 2

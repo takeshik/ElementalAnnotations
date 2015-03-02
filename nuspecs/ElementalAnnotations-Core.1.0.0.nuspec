@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>ElementalAnnotations-Core</id>
+        <version>1.0.0</version>
+        <title>Elemental Annotations - Core</title>
+        <authors>takeshik</authors>
+        <licenseUrl>https://github.com/takeshik/ElementalAttributes/LICENSE.txt</licenseUrl>
+        <projectUrl>https://github.com/takeshik/ElementalAttributes</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Annotation classes for Elemental Programming.</description>
+        <copyright>Copyright © 2015 Takeshi KIRIYA (aka takeshik) &lt;takeshik@tksk.io&gt;</copyright>
+    </metadata>
+    <files>
+        <file src="ElementalAttribute.cs" target="ElementalAnnotations\src\ElementalAttribute.cs" />
+    </files>
+</package>
