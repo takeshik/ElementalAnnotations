@@ -25,18 +25,57 @@ namespace Elemental.Annotations
         }
     }
 
-    public static class CodeElements
+    public static partial class CodeElement
     {
-        public static IEnumerable<Type> GetElementTypesInAssembly(Assembly assembly)
+        private static readonly Lazy<IReadOnlyDictionary<Type, string>> _elements =
+            new Lazy<IReadOnlyDictionary<Type, string>>(() => typeof(CodeElement).GetTypeInfo().Assembly.DefinedTypes
+                .Where(x => x.IsSubclassOf(typeof(ElementalAttribute)))
+                .ToDictionary(x => x.AsType(), x => (string) x.GetDeclaredField("Name").GetValue(null))
+            );
+
+        public static IEnumerable<Type> Types
         {
-            return assembly.ExportedTypes
-                .Where(x => x.GetTypeInfo().IsSubclassOf(typeof(ElementalAttribute)));
+            get
+            {
+                return _elements.Value.Keys;
+            }
         }
 
-        public static ILookup<Type, string> GetElements(MemberInfo member, bool inherit = true)
+        public static IEnumerable<string> Names
+        {
+            get
+            {
+                return _elements.Value.Values;
+            }
+        }
+
+        public static ILookup<string, string> GetElements(MemberInfo member, bool inherit = true)
         {
             return member.GetCustomAttributes(typeof(ElementalAttribute), inherit)
-                .ToLookup(x => x.GetType(), x => ((ElementalAttribute) x).Description);
+                .MakeLookup();
+        }
+
+        public static ILookup<string, string> GetElements(ParameterInfo parameter, bool inherit = true)
+        {
+            return parameter.GetCustomAttributes(typeof(ElementalAttribute), inherit)
+                .MakeLookup();
+        }
+
+        public static ILookup<string, string> GetElements(Module module)
+        {
+            return module.GetCustomAttributes(typeof(ElementalAttribute))
+                .MakeLookup();
+        }
+
+        public static ILookup<string, string> GetElements(Assembly assembly)
+        {
+            return assembly.GetCustomAttributes(typeof(ElementalAttribute))
+                .MakeLookup();
+        }
+
+        private static ILookup<string, string> MakeLookup(this IEnumerable<Attribute> attributes)
+        {
+            return attributes.ToLookup(x => _elements.Value[x.GetType()], x => ((ElementalAttribute) x).Description);
         }
     }
 }

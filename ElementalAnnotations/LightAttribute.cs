@@ -14,10 +14,17 @@ namespace Elemental.Annotations
     public class LightAttribute
         : ElementalAttribute
     {
+        public const string Name = "Light";
+
         public LightAttribute(string description = null)
             : base(description)
         {
         }
+    }
+
+    partial class CodeElement
+    {
+        public const string Light = LightAttribute.Name;
     }
 }
 // vim:set ft=cs fenc=utf-8 ts=4 sw=4 sts=4 et:
