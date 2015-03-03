@@ -7,6 +7,7 @@
 using System;
 using System.Diagnostics;
 
+// ReSharper disable once CheckNamespace
 namespace Elemental.Annotations
 {
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
