@@ -1,18 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
-        <id>ElementalAnnotations-Core</id>
+        <id>ElementalAnnotations-Light</id>
         <version>1.0.0</version>
-        <title>Elemental Annotations - Core</title>
+        <title>Elemental Annotations - Light</title>
         <authors>takeshik</authors>
         <licenseUrl>https://github.com/takeshik/ElementalAttributes/LICENSE.txt</licenseUrl>
         <projectUrl>https://github.com/takeshik/ElementalAttributes</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Core classes for Elemental Programming.</description>
+        <description>Annotation class for Elemental Programming: provides the Light element.</description>
         <copyright>Copyright © 2015 Takeshi KIRIYA (aka takeshik) &lt;takeshik@tksk.io&gt;</copyright>
-        <tags>elemental annotation attribute</tags>
+        <tags>elemental annotation attribute dark</tags>
+        <dependencies>
+            <dependency id="ElementalAnnotations-Core" />
+        </dependencies>
     </metadata>
     <files>
-        <file src="..\ElementalAnnotations\out\ElementalAttribute.cs.pp" target="content\Annotations\ElementalAttribute.cs.pp" />
+        <file src="..\ElementalAnnotations\out\LightAttribute.cs.pp" target="content\Annotations\LightAttribute.cs.pp" />
     </files>
 </package>
