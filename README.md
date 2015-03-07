@@ -12,10 +12,27 @@ public void AwesomeMethod() { /* ... */ }
 
 [Dark]
 public void TerribleMethod() { /* ... */ }
-
 ```
 
-The classes will be provided by various NuGet packages. You can select suitable element attributes according to your codes' world view. Of course, you can define your own elements by your needs.
+The classes are provided by various NuGet packages. You can select suitable element attributes according to your codes' world view. Of course, you can define your own elements by your needs.
+
+### Installation
+
+Install NuGet package(s). For example:
+
+```
+PM> Install-Package ElementalAnnotations-Dualism
+```
+
+`ElementalAnnotations-Dualism` is meta package to install below dependent packages:
+
+* `ElementalAnnotations-Core` - Core classes for all elemental attribute classes
+* `ElementalAnnotations-Dark` - Provides the Dark element
+* `ElementalAnnotations-Light` - Provides the Light element
+
+Package adds C# source files. If you are using other language, please make a class library with installed classes and refer it.
+
+[Search NuGet packages which starts with "ElementalAnnotations-" in the official repository](https://www.nuget.org/packages?q=ElementalAnnotations-).
 
 ### Author
 
