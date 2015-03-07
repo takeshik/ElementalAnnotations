@@ -7,12 +7,13 @@
 using System;
 using System.Diagnostics;
 
+// ReSharper disable CheckNamespace
 #if ELEMENTAL_ANNOTATIONS_DEFAULT_NAMESPACE
 namespace Elemental.Annotations
 #else
-// ReSharper disable once CheckNamespace
 namespace $rootnamespace$.Annotations
 #endif
+// ReSharper restore CheckNamespace
 {
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
     [Conditional("DEBUG")]

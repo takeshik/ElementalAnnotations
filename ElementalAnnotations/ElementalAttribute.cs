@@ -10,12 +10,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
+// ReSharper disable CheckNamespace
 #if ELEMENTAL_ANNOTATIONS_DEFAULT_NAMESPACE
 namespace Elemental.Annotations
 #else
-// ReSharper disable once CheckNamespace
 namespace $rootnamespace$.Annotations
 #endif
+// ReSharper restore CheckNamespace
 {
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
     [Conditional("DEBUG")]
@@ -57,30 +58,34 @@ namespace $rootnamespace$.Annotations
         public static ILookup<string, string> GetElements(MemberInfo member, bool inherit = true)
         {
             return member.GetCustomAttributes(typeof(ElementalAttribute), inherit)
+                .Cast<ElementalAttribute>()
                 .MakeLookup();
         }
 
         public static ILookup<string, string> GetElements(ParameterInfo parameter, bool inherit = true)
         {
             return parameter.GetCustomAttributes(typeof(ElementalAttribute), inherit)
+                .Cast<ElementalAttribute>()
                 .MakeLookup();
         }
 
         public static ILookup<string, string> GetElements(Module module)
         {
             return module.GetCustomAttributes(typeof(ElementalAttribute))
+                .Cast<ElementalAttribute>()
                 .MakeLookup();
         }
 
         public static ILookup<string, string> GetElements(Assembly assembly)
         {
             return assembly.GetCustomAttributes(typeof(ElementalAttribute))
+                .Cast<ElementalAttribute>()
                 .MakeLookup();
         }
 
-        private static ILookup<string, string> MakeLookup(this IEnumerable<Attribute> attributes)
+        private static ILookup<string, string> MakeLookup(this IEnumerable<ElementalAttribute> attributes)
         {
-            return attributes.ToLookup(x => _elements.Value[x.GetType()], x => ((ElementalAttribute) x).Description);
+            return attributes.ToLookup(x => _elements.Value[x.GetType()], x => x.Description);
         }
     }
 }

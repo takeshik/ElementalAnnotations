@@ -8,9 +8,9 @@
         <licenseUrl>https://github.com/takeshik/ElementalAttributes/LICENSE.txt</licenseUrl>
         <projectUrl>https://github.com/takeshik/ElementalAttributes</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Annotation class for Elemental Programming: provides the Light element.</description>
+        <description>Annotation class for Elemental Programming: provides Light element.</description>
         <copyright>Copyright © 2015 Takeshi KIRIYA (aka takeshik) &lt;takeshik@tksk.io&gt;</copyright>
-        <tags>elemental annotation attribute dark</tags>
+        <tags>elemental annotation attribute light</tags>
         <dependencies>
             <dependency id="ElementalAnnotations-Core" />
         </dependencies>
