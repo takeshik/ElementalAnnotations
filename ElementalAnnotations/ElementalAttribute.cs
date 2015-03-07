@@ -10,8 +10,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
-// ReSharper disable once CheckNamespace
+#if ELEMENTAL_ANNOTATIONS_DEFAULT_NAMESPACE
 namespace Elemental.Annotations
+#else
+// ReSharper disable once CheckNamespace
+namespace $rootnamespace$.Annotations
+#endif
 {
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
     [Conditional("DEBUG")]
@@ -80,4 +84,3 @@ namespace Elemental.Annotations
         }
     }
 }
-// vim:set ft=cs fenc=utf-8 ts=4 sw=4 sts=4 et:

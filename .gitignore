@@ -11,6 +11,7 @@ Thumbs.db
 # Outputs
 [Bb]in/
 [Oo]bj/
+[Oo]ut/
 
 # IDE User-specific files
 *.user

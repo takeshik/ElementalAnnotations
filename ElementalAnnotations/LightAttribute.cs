@@ -7,8 +7,12 @@
 using System;
 using System.Diagnostics;
 
-// ReSharper disable once CheckNamespace
+#if ELEMENTAL_ANNOTATIONS_DEFAULT_NAMESPACE
 namespace Elemental.Annotations
+#else
+// ReSharper disable once CheckNamespace
+namespace $rootnamespace$.Annotations
+#endif
 {
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
     [Conditional("DEBUG")]
@@ -28,4 +32,3 @@ namespace Elemental.Annotations
         public const string Light = LightAttribute.Name;
     }
 }
-// vim:set ft=cs fenc=utf-8 ts=4 sw=4 sts=4 et:
