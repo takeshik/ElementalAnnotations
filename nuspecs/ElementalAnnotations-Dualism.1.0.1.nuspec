@@ -2,11 +2,11 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>ElementalAnnotations-Dualism</id>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <title>Elemental Annotations - Dualism</title>
         <authors>takeshik</authors>
-        <licenseUrl>https://github.com/takeshik/ElementalAttributes/LICENSE.txt</licenseUrl>
-        <projectUrl>https://github.com/takeshik/ElementalAttributes</projectUrl>
+        <licenseUrl>https://github.com/takeshik/ElementalAnnotations/blob/master/LICENSE.txt</licenseUrl>
+        <projectUrl>https://github.com/takeshik/ElementalAnnotations</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Annotation class for Elemental Programming: provides Dark and Light element.</description>
         <copyright>Copyright © 2015 Takeshi KIRIYA (aka takeshik) &lt;takeshik@tksk.io&gt;</copyright>
