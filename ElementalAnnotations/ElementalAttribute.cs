@@ -33,17 +33,32 @@ namespace $rootnamespace$.Annotations
 
     public static partial class CodeElement
     {
-        private static readonly Lazy<IReadOnlyDictionary<Type, string>> _elements =
-            new Lazy<IReadOnlyDictionary<Type, string>>(() => typeof(CodeElement).GetTypeInfo().Assembly.DefinedTypes
-                .Where(x => x.IsSubclassOf(typeof(ElementalAttribute)))
-                .ToDictionary(x => x.AsType(), x => (string) x.GetDeclaredField("Name").GetValue(null))
-            );
+        private static IReadOnlyDictionary<Type, string> _elements;
+
+        private static IReadOnlyDictionary<Type, string> Elements
+        {
+            get
+            {
+                return _elements ?? (_elements = typeof(CodeElement).GetTypeInfo().Assembly.DefinedTypes
+                    .Where(x => x.IsSubclassOf(typeof(ElementalAttribute)))
+                    .ToDictionary(x => x.AsType(), x => (string) x.GetDeclaredField("Name").GetValue(null))
+                );
+            }
+        }
+
+        public static int Count
+        {
+            get
+            {
+                return Elements.Count;
+            }
+        }
 
         public static IEnumerable<Type> Types
         {
             get
             {
-                return _elements.Value.Keys;
+                return Elements.Keys;
             }
         }
 
@@ -51,7 +66,7 @@ namespace $rootnamespace$.Annotations
         {
             get
             {
-                return _elements.Value.Values;
+                return Elements.Values;
             }
         }
 
@@ -85,7 +100,7 @@ namespace $rootnamespace$.Annotations
 
         private static ILookup<string, string> MakeLookup(this IEnumerable<ElementalAttribute> attributes)
         {
-            return attributes.ToLookup(x => _elements.Value[x.GetType()], x => x.Description);
+            return attributes.ToLookup(x => Elements[x.GetType()], x => x.Description);
         }
     }
 }
